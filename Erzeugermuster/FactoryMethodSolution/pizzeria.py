@@ -1,9 +1,72 @@
 # have to import abcplus
-from abc import ABC, ABCMeta
+from abc import ABC, abstractmethod
 
-from pyparsing import abstractmethod
-from pizza import *
+# Pizzen ##################################################
+class Pizza(ABC):
+    def backen(self):
+        print("Backe Pizza")
 
+    def vorbereiten(self):
+        print("Bereite Pizza vor")
+
+    def schneiden(self):
+        print("Pizza schneiden")
+
+    def einpacken(self):
+        print("Packe Pizza ein")
+
+    def __str__(self):
+        return "Eine Pizza"
+
+class SalamiPizza(Pizza):
+    def __str__(self):
+        return "Eine SalamiPizza"
+
+class SchinkenPizza(Pizza):
+    def __str__(self):
+        return "Eine SchinkenPizza"
+
+class SpinatPizza(Pizza):
+    def __str__(self):
+        return "Eine SpinatPizza"
+
+class BerlinerSalamiPizza(Pizza):
+    def __str__(self):
+        return "Eine Berliner SalamiPizza"
+
+class BerlinerSchinkenPizza(Pizza):
+    def __str__(self):
+        return "Eine Berliner SchinkenPizza"
+
+class BerlinerKrabbenPizza(Pizza):
+    def __str__(self):
+        return "Eine Berliner KrabbenPizza"
+
+class BerlinerThunfischPizza(Pizza):
+    def __str__(self):
+        return "Eine Berliner ThunfischPizza"
+
+class MuenchnerSalamiPizza(Pizza):
+    def __str__(self):
+        return "Eine Münchner SalamiPizza"
+
+class MuenchnerSchinkenPizza(Pizza):
+    def __str__(self):
+        return "Eine Münchner SchinkenPizza"
+
+class MuenchnerKrabbenPizza(Pizza):
+    def __str__(self):
+        return "Eine Münchner KrabbenPizza"
+
+class MuenchnerThunfischPizza(Pizza):
+    def __str__(self):
+        return "Eine Münchner ThunfischPizza"
+
+class MuenchnerKaesePizza(Pizza):
+    def __str__(self):
+        return "Eine Münchner KäsePizza"
+
+# Pizzerias ###############################################
 class Pizzeria(ABC):
 
     @abstractmethod
@@ -18,7 +81,7 @@ class Pizzeria(ABC):
             pizza.backen()
             pizza.schneiden()
             pizza.einpacken()
-
+            
         return pizza
 
 class BerlinerPizzeria(Pizzeria):
@@ -59,4 +122,8 @@ class MuenchnerPizzeria(Pizzeria):
             return None
         return pizza
 
-
+# Main ####################################################
+if __name__ == "__main__":
+    pizzeria = MuenchnerPizzeria()
+    pizza = pizzeria.bestelle_pizza("Käse")
+    print(pizza)

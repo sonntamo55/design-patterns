@@ -1,9 +1,35 @@
-# have to import abcplus
-from abc import ABC, ABCMeta
+from abc import ABC, abstractmethod
 
-from pyparsing import abstractmethod
-from pizza import *
+# Pizzen ##################################################
+class Pizza(ABC):
+    def backen(self):
+        print("Backe Pizza")
 
+    def vorbereiten(self):
+        print("Bereite Pizza vor")
+
+    def schneiden(self):
+        print("Pizza schneiden")
+
+    def einpacken(self):
+        print("Packe Pizza ein")
+
+    def __str__(self) -> str:
+        return "Eine Pizza"
+
+class SalamiPizza(Pizza):
+    def __str__(self) -> str:
+        return "Eine SalamiPizza"
+
+class SchinkenPizza(Pizza):
+    def __str__(self) -> str:
+        return "Eine SchinkenPizza"
+
+class SpinatPizza(Pizza):
+    def __str__(self) -> str:
+        return "Eine SpinatPizza"
+
+# Pizzeria ################################################
 class Pizzeria():
 
     def bestelle_pizza(self, typ) -> Pizza:
@@ -24,5 +50,8 @@ class Pizzeria():
 
         return pizza
 
-
-
+# Main ####################################################
+if __name__ == "__main__":
+    pizzeria = Pizzeria()
+    pizza = pizzeria.bestelle_pizza("Spinat")
+    print(pizza)
