@@ -53,7 +53,8 @@ if __name__ == "__main__":
         Ändern Sie den Code hin zum TemplateMethod Muster:
             - Erstellen Sie eine abstrakte Klasse Heissgetraenk
             - Ziehen Sie folgende Methoden in die neue Klasse
-                - zubereitungsrezept()
+                - zubereitungsrezept(). Passen Sie den Algorithmus an, dass er für Tee und Kaffee 
+                  exakt gleich ist
                 - koche_wasser()
                 - in_tasse_schuetten()
             - Kaffee und Tee erben von Heissgetraenk
