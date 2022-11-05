@@ -1,4 +1,5 @@
 from numpy import double
+from abc import abstractmethod
 
 # Alle Klassen sind Getränke, auch die Dekorierer. 
 class Getraenk():
@@ -18,7 +19,18 @@ class Getraenk():
 # Der abstrakte Dekorierer. Auch er ist ein Getränk
 class ZutatDecorator(Getraenk):
 
+    getraenk:Getraenk
+
+    def __init__(self, getraenk: Getraenk):
+        self.getraenk = getraenk
+
+    @abstractmethod
     def get_beschreibung(self) -> str:
+        # must be implemented by sub classes
+        pass
+    
+    @abstractmethod
+    def preis(self) -> str:
         # must be implemented by sub classes
         pass
 
@@ -64,52 +76,32 @@ class Entkoffeiniert(Getraenk):
 '''
 class Schoko(ZutatDecorator):
 
-    getraenk: Getraenk
-
     def get_beschreibung(self) -> str:
         return self.getraenk.get_beschreibung() + ", Schoko"
-    
-    def __init__(self, getraenk: Getraenk):
-        self.getraenk = getraenk
 
     def preis(self) -> double:
         return 0.2 + self.getraenk.preis()
 
 class Milch(ZutatDecorator):
 
-    getraenk: Getraenk
-
     def get_beschreibung(self) -> str:
         return self.getraenk.get_beschreibung() + ", Milch"
-    
-    def __init__(self, getraenk: Getraenk):
-        self.getraenk = getraenk
 
     def preis(self) -> double:
         return 0.1 + self.getraenk.preis()
 
 class Milchschaum(ZutatDecorator):
 
-    getraenk: Getraenk
-
     def get_beschreibung(self) -> str:
         return self.getraenk.get_beschreibung() + ", Milchschaum"
-    
-    def __init__(self, getraenk: Getraenk):
-        self.getraenk = getraenk
 
     def preis(self) -> double:
         return 0.1 + self.getraenk.preis()
 
 class Soja(ZutatDecorator):
 
-    getraenk: Getraenk
-
     def get_beschreibung(self) -> str:
         return self.getraenk.get_beschreibung() + ", Soja"
-    
-    def __init__(self, getraenk: Getraenk):
-        self.getraenk = getraenk
 
     def preis(self) -> double:
         return 0.15 + self.getraenk.preis()
