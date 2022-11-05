@@ -12,6 +12,9 @@ class Produkt():
         self.beschreibung = beschreibung
         self.preis = preis
 
+    def ausgeben(self):
+        print(self)
+        
     def __str__(self):
         return self.name + ": " + self.beschreibung + " (" + str(round(self.preis, 2)) + ")"
 
@@ -27,7 +30,10 @@ class Paket():
     def produkt_hinzufuegen(self, produkt: Produkt):
         self.produkte.append(produkt)
 
-    def produkte_ausgeben(self):
+    def produkt_entfernen(self, produkt: Produkt):
+        self.produkte.remove(produkt)
+
+    def ausgeben(self):
         print(self)
         for produkt in self.produkte:
             print(produkt)
@@ -47,10 +53,13 @@ if __name__ == "__main__":
     print(produkt)
     paket = Paket("Paket", 3.99)
     paket.produkt_hinzufuegen(produkt)
-    paket.produkte_ausgeben()
-    print("Paketpreis: " + str(round(paket.get_preis(), 2)))
+    paket.ausgeben()
+    print("\nPaketpreis: " + str(round(paket.get_preis(), 2)))
     '''
         Was muss man tun, wenn Pakete wieder Pakete enthalten können sollen?
-        Ändern Sie den Code so, dass Pakete und Produkte gleich behandelt
-        werden können, d.h. wenden Sie das Composite-Muster an!
+        
+        Aufgabe: Ändern Sie den Entwurf hin zum Composite-Muster:
+            - Interface "Komponente" anlegen mit gemeinsamen Methoden von Paket/Produkt
+            - Produkte in der Klasse Paket dürfen nur noch Komponenten sein
+            - Paket delegiert gemeinsame Methoden (teilweise) an die Kinder
     '''

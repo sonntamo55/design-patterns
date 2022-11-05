@@ -1,8 +1,8 @@
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 from typing import List
 from numpy import double
 
-class Komponente():
+class Komponente(ABC):
     
     @abstractmethod
     def get_preis(self) -> double:
@@ -34,11 +34,12 @@ class Produkt(Komponente):
 class Paket(Komponente):
     name:str
     preis:double
-    
+    kinder:List[Komponente]
+
     def __init__(self, name:str, preis:double):
         self.name = name
         self.preis = preis
-        self.kinder: List[Komponente] = []
+        self.kinder = []
 
     def hinzufuegen(self, kind: Komponente):
         self.kinder.append(kind)
@@ -63,7 +64,6 @@ class Paket(Komponente):
 
 if __name__ == "__main__":
     produkt = Produkt("Computer", "Ein super Computer", 599.00)
-    #print(produkt)
     paket = Paket("Großes Paket", 3.99)
 
     # ein Paket kann auch wieder ein Paket enthalten usw.
