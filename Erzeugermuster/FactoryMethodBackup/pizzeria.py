@@ -55,3 +55,13 @@ if __name__ == "__main__":
     pizzeria = Pizzeria()
     pizza = pizzeria.bestelle_pizza("Spinat")
     print(pizza)
+
+    '''
+    Die Logik zum Erstellen einer Pizza liegt in der Pizzeria. Was muss man machen, wenn
+    man eine neue Pizza einführt? Und was, wenn es eine neue Pizzeria geben soll?
+    Aufgabe: Ändern Sie den Entwurf hin zum Factory Method Muster:
+        - Pizzeria: Das Erstellen der Pizza wird in eine (abstrakte) Methode ausgelagert. 
+        - Erstellen Sie eine neue konkrete Pizzeria, die von Pizzeria erbt und das Erstellen der 
+          Pizza nach Typ implementiert
+        - Erstellen Sie eine zweite Pizzeria
+    '''

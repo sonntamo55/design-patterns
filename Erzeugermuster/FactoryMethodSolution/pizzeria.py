@@ -86,9 +86,6 @@ class Pizzeria(ABC):
 
 class BerlinerPizzeria(Pizzeria):
 
-    def bestelle_pizza(self, typ) -> Pizza:
-        return super().bestelle_pizza(typ)
-
     def erstelle_pizza(self, typ) -> Pizza:
         if (typ == "Salami"):
             pizza = BerlinerSalamiPizza()
@@ -103,9 +100,6 @@ class BerlinerPizzeria(Pizzeria):
         return pizza
 
 class MuenchnerPizzeria(Pizzeria):
-
-    def bestelle_pizza(self, typ) -> Pizza:
-        return super().bestelle_pizza(typ)
 
     def erstelle_pizza(self, typ) -> Pizza:
         if (typ == "Käse"):
