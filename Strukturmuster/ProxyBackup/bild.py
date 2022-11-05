@@ -26,7 +26,7 @@ class Person():
     def bild_hinzufuegen(self, bild: Bild):
         self.bild = bild
 
-    def hole_bild(self):
+    def get_bild(self):
         return self.bild
 
     def __str__(self):
@@ -34,18 +34,31 @@ class Person():
     
 class Datenbank():
     
-    def load_person(self, id:int) -> Person:
+    def lade_person(self, id:int) -> Person:
         person = Person(id, "Max", "Mustermann")
-        bild = self.bild_laden()
+        bild = self.lade_bild()
         person.bild_hinzufuegen(bild)
         return person
 
-    def bild_laden(self) -> Bild:
+    def lade_bild(self) -> Bild:
         return Bild(400, 600, "Schönes Passfoto")
 
 if __name__ == "__main__":
     db = Datenbank()
-    person = db.load_person(55)
+    person = db.lade_person(55)
     print(person)
-    person.hole_bild().zeichnen()
-    person.hole_bild().zeichnen()
+    person.get_bild().zeichnen()
+    person.get_bild().zeichnen()
+
+    '''
+    Wenn eine Person geladen wird, dann auch gleich ihr Bild. Das Bild wird in der Anwendung selten benötigt.
+    Es ist also besser, das Bild erst bei Bedarf nachzuladen.
+    
+    Aufgabe: Ändern Sie den Code so, dass das Proxy-Muster für das Bild verwendet wird (genauer: Virtual Proxy)
+        - Bild und BildProxy teilen sich ein Interface IBild
+        - Die Datenbank erstellt einen Proxy statt des echten Bildes
+        - Die Datenbank sollte ein Singleton sein, damit der Proxy gut darauf zugreifen kann
+        - Wenn das Bild benötigt wird (Methode „zeichnen“), lädt der Proxy es nach.
+        - Wenn es bereits geladen ist, wird es nicht erneut geladen
+
+    '''

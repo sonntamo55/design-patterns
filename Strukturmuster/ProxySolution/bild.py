@@ -17,7 +17,7 @@ class Person():
     def bild_hinzufuegen(self, bild: IBild):
         self.bild = bild
 
-    def hole_bild(self):
+    def get_bild(self):
         return self.bild
 
     def __str__(self):
@@ -31,13 +31,14 @@ class Datenbank():
             cls.instance = super(Datenbank, cls).__new__(cls)
         return cls.instance
 
-    def load_person(self, id:int) -> Person:
+    def lade_person(self, id:int) -> Person:
         person = Person(id, "Max", "Mustermann")
-        bild = BildProxy()
+        bild = BildProxy(id)
         person.bild_hinzufuegen(bild)
         return person
 
-    def bild_laden(self) -> IBild:
+    def lade_bild(self, id:int) -> IBild:
+        # id ist hier nur gefaked
         return Bild(400, 600, "Schönes Passfoto")
 
 class Bild(IBild):
@@ -58,24 +59,29 @@ class Bild(IBild):
 # Virtual Proxy
 class BildProxy(IBild):
 
+    person_id:int
+
+    def __init__(self, id:int):
+        self.person_id = id
+
     '''
     Lazy Loading: Bild wird erst geladen, wenn es gebraucht wird. 
     Achtung: Bild nicht mehrmals laden
     '''
     def zeichnen(self):
         if not hasattr(self, "original"):
-            self.original = Datenbank().bild_laden()
+            self.original = Datenbank().lade_bild(self.person_id)
         self.original.zeichnen()
 
 if __name__ == "__main__":
     db = Datenbank()
 
     # Person wird geladen, das Bild nicht
-    person = db.load_person(55)
+    person = db.lade_person(55)
     print(person)
 
     # Bild wird geladen (Lazy Loading) und dann gezeichnet
-    person.hole_bild().zeichnen()
+    person.get_bild().zeichnen()
 
     # Bild wird nicht nochmal geladen, sondern nur gezeichnet
-    person.hole_bild().zeichnen()
+    person.get_bild().zeichnen()
