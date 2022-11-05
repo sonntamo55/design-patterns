@@ -1,5 +1,7 @@
+from abc import ABC, abstractmethod
+
 # Die legacy Klasse der alten Bank
-class Bank():
+class LegacyBank():
 
     # Benötigt Kontonummer und BLZ für die Überweisung
     def ueberweisen(self, kontonr, blz):
@@ -14,20 +16,21 @@ class Bank():
         print("Überweisung auf Konto", kontonr, "BLZ", blz)
 
 # Interface des BankAdapters
-class BankAdapter():
+class IBank(ABC):
 
+    @abstractmethod
     def ueberweisen(self, kontonr:str, blz:str):
         # wird vom konkreten Adapter implementiert
         pass
 
 # Der konkrete BankAdapter
-class KonkreterBankAdapter(BankAdapter):
+class BankAdapter(IBank):
 
     # Referenz auf den legacy Code der alten Bank
-    bank: Bank
+    bank: LegacyBank
 
     # Die Referenz auf die alte Bank wird im Konstruktor mitgegeben
-    def __init__(self, bank: Bank):
+    def __init__(self, bank: LegacyBank):
         self.bank = bank
 
     # Die Adapterlogic: aus der IBAN werden Kontonummer und BLZ
@@ -40,9 +43,9 @@ class KonkreterBankAdapter(BankAdapter):
 class Client():
 
     # Referenz auf den Adapter
-    bank:BankAdapter
+    bank:IBank
 
-    def __init__(self, bank: BankAdapter):
+    def __init__(self, bank: IBank):
         self.bank = bank
 
     # Der Client kann die Überweisung einfach mit IBAN und BIC ausführen
@@ -51,5 +54,5 @@ class Client():
 
 
 if __name__ == "__main__":
-    cl = Client(KonkreterBankAdapter(Bank()))
+    cl = Client(BankAdapter(LegacyBank()))
     cl.ueberweisen("DE99123456780012345678", "BIC600")

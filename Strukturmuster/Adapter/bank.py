@@ -1,5 +1,5 @@
 # Die Legacy-Klasse der alten Bank
-class Bank():
+class LegacyBank():
 
     # Benötigt Kontonummer und BLZ für die Überweisung
     def ueberweisen(self, kontonr, blz):
@@ -17,9 +17,9 @@ class Bank():
 class Client():
 
     # Referenz auf die alte Bank
-    bank:Bank
+    bank:LegacyBank
 
-    def __init__(self, bank: Bank):
+    def __init__(self, bank: LegacyBank):
         self.bank = bank
 
     # Der Client implementiert die Transformationslogik
@@ -30,5 +30,17 @@ class Client():
 
 
 if __name__ == "__main__":
-    cl = Client(Bank())
+    cl = Client(LegacyBank())
     cl.ueberweisen("DE99123456780012345678", "BIC600")
+
+    '''
+        Die Transformationslogik befindet sich im Client. Das ist ungeschickt, denn es kann hier
+        potenziell zu Änderungen kommen.
+        
+        Aufgabe: Ändern Sie das Design hin zum Adapter-Muster:
+            - Legen Sie ein Interface für den Adapter an
+            - Implementieren Sie das Interface durch einen konkreten Adapter
+            - Der Adapter soll eine Referenz auf ein Bank-Objekt erhalten (Objektadapter)
+            - Erstellen Sie die Transformationslogik im konkreten Adapter
+
+    '''
