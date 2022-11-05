@@ -79,7 +79,7 @@ class AusschneidenBefehl(Befehl):
         self.backup_begin = -1
 
 # Shortcuts ###############################################
-class Shortcut(ABC):
+class Shortcut():
 
     befehl:Befehl
     
@@ -90,7 +90,7 @@ class Shortcut(ABC):
         return self.befehl.execute()
 
 # Buttons #################################################
-class Button(ABC):
+class Button():
 
     befehl:Befehl
 
