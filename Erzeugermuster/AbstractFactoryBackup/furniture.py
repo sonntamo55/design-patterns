@@ -1,6 +1,7 @@
+from abc import ABC
 
 # Tables ##################################################
-class Table:
+class Table(ABC):
     pass
 
 class VictorianTable(Table):
@@ -25,7 +26,7 @@ class ArtDecoTable(Table):
         return "An art deco table"
 
 # Sofas ###################################################
-class Sofa:
+class Sofa(ABC):
     pass
 
 class VictorianSofa(Sofa):
@@ -50,8 +51,7 @@ class ArtDecoSofa(Sofa):
         return "An art deco sofa"
 
 # Chairs ##################################################
-
-class Chair:
+class Chair(ABC):
     pass
 
 class VictorianChair(Chair):
@@ -84,5 +84,10 @@ if __name__ == "__main__":
     '''
         Der Client hängt von den konkreten Klassen ab und muss sich die
         Klassenfamilien berücksichtigen.
-        Ändern Sie den Code hin zum Abstract Factory Muster
+        Ändern Sie den Code hin zum Abstract Factory Muster:
+            - Erstellen Sie eine abstrakte FurnitureFactory, die Stuhl, Tisch und Sofa erzeugen kann
+            - Erstellen Sie 3 konkrete Möbelfabriken für die 3 Produktfamilien viktorianisch, modern und Art Deco
+            - Lassen Sie die 3 konkreten Möbelfabriken die Erzeugnisse erstellen
+            - Lassen Sie den Client eine Möbelfabrik benutzen
+
     '''

@@ -1,5 +1,7 @@
+from abc import ABC, abstractmethod
+
 # Tables ##################################################
-class Table:
+class Table(ABC):
     pass
 
 class VictorianTable(Table):
@@ -24,7 +26,7 @@ class ArtDecoTable(Table):
         return "An art deco table"
 
 # Sofas ###################################################
-class Sofa:
+class Sofa(ABC):
     pass
 
 class VictorianSofa(Sofa):
@@ -50,7 +52,7 @@ class ArtDecoSofa(Sofa):
 
 # Chairs ##################################################
 
-class Chair:
+class Chair(ABC):
     pass
 
 class VictorianChair(Chair):
@@ -74,14 +76,17 @@ class ArtDecoChair(Chair):
     def __str__(self):
         return "An art deco chair"
 
-class FurnitureFactory():
+class FurnitureFactory(ABC):
     
+    @abstractmethod
     def create_chair(self) -> Chair:
         pass
 
+    @abstractmethod
     def create_table(self) -> Table:
         pass
-
+    
+    @abstractmethod
     def create_sofa(self) -> Sofa:
         pass
 

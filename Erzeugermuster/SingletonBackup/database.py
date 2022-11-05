@@ -24,3 +24,15 @@ if __name__ == "__main__":
     db2.load_person(55)
     db3 = Database()
     db3.load_person(55)
+
+    '''
+        Jede neue Datenbank-Instanz hat einen leeren Cache. Eigentlich brauchen wir nur
+        eine einzige Datenbank-Instanz.
+        Ändern Sie den Entwurf hin zum Singleton-Muster:
+            - Variable _instance anlegen
+            - Methode __new__ überschreiben:
+                1. Prüfen, ob das Attribut _instance bereits existiert
+                2. Wenn nein, dann wird es gesetzt: cls._instance = super(Database, cls).__new__(cls)
+                3. Wenn doch, dann wird es zurückgegeben
+            - Methode get_instance anlegen, die die eine Instanz zurückgibt
+    '''
