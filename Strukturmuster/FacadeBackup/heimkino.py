@@ -28,6 +28,9 @@ class Verstaerker():
         print("Verstärker: auf Lautstärke", lautst, "gesetzt")
     
 class Radio():
+
+    kanal: int
+
     def ein(self):
         print("Radio eingeschaltet")
 
@@ -40,8 +43,11 @@ class Radio():
     def set_fm(self):
         print("Radio: auf FM gesetzt")
 
-    def set_kanal(self, kanal):
+    def set_kanal(self, kanal:int):
         print("Radio: auf Kanal", kanal, "gesetzt")
+
+    def get_kanal(self):
+        return self.kanal
 
 class CdSpieler():
     def ein(self):
@@ -53,11 +59,11 @@ class CdSpieler():
     def auswerfen(self):
         print("CD-Spieler: CD ausgeworfen")
 
-    def pause(self):
-        print("CD-Spieler: Pause")
-
     def wiedergabe(self):
         print("CD-Spieler: Wiedergabe")
+
+    def pause(self):
+        print("CD-Spieler: Pause")
 
     def stopp(self):
         print("CD-Spieler: Stopp")
@@ -72,11 +78,11 @@ class BluraySpieler():
     def auswerfen(self):
         print("Bluray-Spieler: Bluray ausgeworfen")
 
-    def pause(self):
-        print("Bluray-Spieler: Pause")
-
     def wiedergabe(self):
         print("Bluray-Spieler: Wiedergabe")
+
+    def pause(self):
+        print("Bluray-Spieler: Pause")
 
     def stopp(self):
         print("Bluray-Spieler: Stopp")
@@ -92,8 +98,8 @@ class Beamer():
     def tv_modus(self):
         print("Beamer: auf TV-Modus gesetzt")
     
-    def breitwand_modus(self):
-        print("Beamer: auf Breitwand-Modus gesetzt")
+    def kino_modus(self):
+        print("Beamer: auf Kino-Modus gesetzt")
 
 class Beleuchtung():
     
@@ -135,11 +141,21 @@ class PopcornMaschine():
 if __name__ == "__main__":
     # Film schauen
     '''
-        Popcorn Maschine anschalten und aktiviere
-        Beleuchtung einschalten und auf 5 dimmen 
-        Leinwand runter fahren
-        Beamer einschalten und in Breitwand-Modus schalten
-        Verstärker einschalten, auf Bluray und Surround Sound setzen, Lautstärke auf 10
-        Bluray einschalten und wiedergeben
+        Das System ist sehr komplex. 
 
+        Aufgabe: Implementieren Sie die Logik, um einen Kinoabend zu veranstalten.
+            - Popcorn Maschine anschalten und aktivieren
+            - Beleuchtung einschalten und auf 5 dimmen 
+            - Leinwand runter fahren
+            - Beamer einschalten und in Breitwand-Modus schalten
+            - Verstärker einschalten, auf Bluray und Surround Sound setzen, Lautstärke auf 10
+            - Bluray einschalten und wiedergeben
+
+        Das komplexe System zu steuern, ist ziemlich aufwändig.
+        
+        Aufgabe: Ändern Sie das Design hin zu Facade-Muster
+            - HeimkinoFacade erstellen
+            - Methode zum Film schauen anlegen
+            - Facade in der „Main“ benutzen
+            - Erweitern Sie die Fassade um eine Methode, um alles auszuschalten
     '''
