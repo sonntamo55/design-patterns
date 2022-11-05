@@ -111,9 +111,15 @@ if __name__ == "__main__":
     print(ka)
 
     '''
-    Der Automat ist naiv und unflexibel programmiert. Wenn jetzt ein Zustand hinzukommt, müssen sehr
-    viele Änderungen vorgenommen werden.
-    Ändern Sie das Design nach dem State Pattern! 
-    '''
-
+    Der Automat ist naiv und unflexibel programmiert. Die Statusänderungen sind im Automaten hart-codier.
+    Wenn jetzt ein Zustand hinzukommt, müssen sehr viele Änderungen vorgenommen werden.
     
+    Aufgabe: Ändern Sie das Design nach dem State Pattern! 
+        - Legen Sie für die 4 Status jeweils eine Klasse an
+        - Es soll eine Superklasse "Status" geben, von der alle 4 Statusklassen erben
+        - Die Logik wird aus dem Kaugummiautomaten in die Statusklassen verlagert
+
+    Aufgabe: Was muss man machen, wenn ein weiterer Zustand eingeführt werden soll?
+        - Zum Beispiel wenn man 2 Münzen für 1 Kaugummi braucht
+    
+    '''
