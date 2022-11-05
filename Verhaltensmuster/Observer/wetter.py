@@ -53,3 +53,20 @@ if __name__ == "__main__":
     wd.setze_messwerte(30, 65, 1001)
     wd.setze_messwerte(28, 70, 998)
     wd.setze_messwerte(25, 80, 990)
+
+    '''
+        Die Wetterstation aktualisiert 3 Anzeigen, wenn sich die Messwerte ändern.
+        Der Station sind die 3 Anzeigen bekannt.
+
+        Aufgabe: Was muss man machen, wenn eine weitere Anzeige dazu kommt?
+
+        Aufgabe: Ändern Sie den Code zum Observer Muster
+            - Abstrakte Klasse "Subjekt" anlegen mit Methoden registriereBeobachter, entferneBeobachter, benachrichtigeBeobachter
+            - Wetterdaten erbt von Subjekt
+            - Abstrakte Klasse "Observer" anlegen mit Methode aktualisieren
+            - Die 3 Anzeigen erben von Observer
+
+        Aufgabe: Was muss man machen, wenn weitere Messwerte hinzukommen?
+            - Verbessern Sie den Code entsprechend!
+
+    '''
