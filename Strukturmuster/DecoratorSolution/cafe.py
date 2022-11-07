@@ -1,14 +1,15 @@
 from numpy import double
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
 # Alle Klassen sind Getränke, auch die Dekorierer. 
-class Getraenk():
+class Getraenk(ABC):
     
     beschreibung: str = "Ein unbekanntes Getränk"
 
     def get_beschreibung(self) -> str:
         return self.beschreibung
 
+    @abstractmethod
     def preis(self) -> double:
         # must be implemented by sub classes
         pass
@@ -17,7 +18,7 @@ class Getraenk():
         return self.get_beschreibung() + ": " + str(round(self.preis(), 2))
 
 # Der abstrakte Dekorierer. Auch er ist ein Getränk
-class ZutatDecorator(Getraenk):
+class ZutatDecorator(Getraenk, ABC):
 
     getraenk:Getraenk
 
@@ -30,7 +31,7 @@ class ZutatDecorator(Getraenk):
         pass
     
     @abstractmethod
-    def preis(self) -> str:
+    def preis(self) -> double:
         # must be implemented by sub classes
         pass
 
