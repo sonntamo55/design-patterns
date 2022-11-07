@@ -50,13 +50,14 @@ if __name__ == "__main__":
     '''
         Kaffee und Tee besitzen den gleichen Ablauf beim Rezept. In manchen Aspekten unterscheiden
         sie sich jedoch.
-        Ändern Sie den Code hin zum TemplateMethod Muster:
+        
+        Aufgabe: Ändern Sie den Code hin zum TemplateMethod Muster:
             - Erstellen Sie eine abstrakte Klasse Heissgetraenk
             - Ziehen Sie folgende Methoden in die neue Klasse
-                - zubereitungsrezept(). Passen Sie den Algorithmus an, dass er für Tee und Kaffee 
-                  exakt gleich ist
+                - zubereitungsrezept()
                 - koche_wasser()
                 - in_tasse_schuetten()
             - Kaffee und Tee erben von Heissgetraenk
+        Aufgabe: 
             - Machen Sie das Hinzufügen von Zutaten optional über einen Hook
     '''
