@@ -1,8 +1,10 @@
+from numpy import double
+
 # Die Legacy-Klasse der alten Bank
 class LegacyBank():
 
     # Benötigt Kontonummer und BLZ für die Überweisung
-    def ueberweisen(self, kontonr, blz):
+    def ueberweisen(self, kontonr:str, blz:str, betrag:double):
         if not all(char.isdigit() for char in kontonr):
             print("Kontonummer ist keine Zahl")
             return
@@ -11,7 +13,7 @@ class LegacyBank():
             print("BLZ ist keine Zahl")
             return
 
-        print("Überweisung auf Konto", kontonr, "BLZ", blz)
+        print(f"Überweisung von {betrag} EUR auf Konto {kontonr} BLZ {blz}")
 
 # Der Client muss  den Legacy Code der alten Bank kennen
 class Client():
@@ -23,15 +25,15 @@ class Client():
         self.bank = bank
 
     # Der Client implementiert die Transformationslogik
-    def ueberweisen(self, iban:str, bic:str):
+    def ueberweisen(self, iban:str, bic:str, betrag:double):
         kontonr = iban[12:22]
         blz = iban[4:12]
-        self.bank.ueberweisen(kontonr, blz)
+        self.bank.ueberweisen(kontonr, blz, betrag)
 
 
 if __name__ == "__main__":
     cl = Client(LegacyBank())
-    cl.ueberweisen("DE99123456780012345678", "BIC600")
+    cl.ueberweisen("DE99123456780012345678", "BIC600", 1500)
 
     '''
         Die Transformationslogik befindet sich im Client. Das ist ungeschickt, denn es kann hier
