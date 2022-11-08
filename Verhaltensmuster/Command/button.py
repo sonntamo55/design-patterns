@@ -48,10 +48,6 @@ class Button(ABC):
 
 class KopierenButton(Button):
 
-    def __init__(self, app:App, editor:Editor):
-        self.kopierter_text = ""
-        super().__init__(app, editor)
-
     def click(self):
         self.app.setze_kopierten_text(self.editor.get_selection())
 
