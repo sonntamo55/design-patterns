@@ -25,7 +25,7 @@ class MoorEnte(Ente):
     def anzeigen(self):
         print("Sieht aus wie eine Moorente")
 
-class GummitEnte(Ente):
+class GummiEnte(Ente):
 
     def anzeigen(self):
         print("Sieht aus wie eine Gummiente")
@@ -50,7 +50,7 @@ class LockEnte(Ente):
 if __name__ == "__main__":
     stockente = StockEnte()
     moorente = MoorEnte()
-    gummiente = GummitEnte()
+    gummiente = GummiEnte()
     lockente = LockEnte()
 
     stockente.anzeigen()
