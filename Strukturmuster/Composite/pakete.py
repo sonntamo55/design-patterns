@@ -14,7 +14,7 @@ class Produkt():
 
     def ausgeben(self):
         print(self)
-        
+
     def __str__(self):
         return self.name + ": " + self.beschreibung + " (" + str(round(self.preis, 2)) + ")"
 
@@ -62,4 +62,8 @@ if __name__ == "__main__":
             - Interface "Komponente" anlegen mit gemeinsamen Methoden von Paket/Produkt
             - Produkte in der Klasse Paket dürfen nur noch Komponenten sein
             - Paket delegiert gemeinsame Methoden (teilweise) an die Kinder
+        Zum Testen:
+            - Legen Sie Produkte und Pakete an
+            - Stecken Sie Produkte in Pakete - und Pakete in Pakete
+            - Geben Sie das äußerste Paket aus bzw. ermitteln Sie den Preis
     '''
