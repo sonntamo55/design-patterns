@@ -25,7 +25,7 @@ class MoorEnte(Ente):
     def anzeigen(self):
         print("Sieht aus wie eine Moorente")
 
-class GummitEnte(Ente):
+class GummiEnte(Ente):
 
     def anzeigen(self):
         print("Sieht aus wie eine Gummiente")
@@ -50,7 +50,7 @@ class LockEnte(Ente):
 if __name__ == "__main__":
     stockente = StockEnte()
     moorente = MoorEnte()
-    gummiente = GummitEnte()
+    gummiente = GummiEnte()
     lockente = LockEnte()
 
     stockente.anzeigen()
@@ -80,4 +80,14 @@ if __name__ == "__main__":
 
     Aufgabe: Ändern Sie die Anwendung hin zum Strategy-Pattern
         - Erstellen Sie Interfaces für das FlugVerhalten und das QuakVerhalten
+        - Die Klasse Ente soll 2 Member bekommen vom Typ Flug- bzw. QuakVerhalten
+        - Die Member müssen gesetzt werden können. Im Konstruktor oder über Setter oder beides. 
+        - Es gibt verschiedene Verhalten, die die o.g. Interfaces implementieren: FliegtMitFluegeln, 
+          FliegtNicht, Quaken, Quietschen, StummesQuaken
+        - In der Ente-Klasse wird die Logik von fliegen() und quaken() an die Member delegiert
+
+    Aufgabe 2: Was muss man ändern, wenn jetzt noch ein Raketenantrieb hinzukommt? Oder ein Pfeifen?
+        - Erstellen Sie eine neue Ente: ModellEnte
+        - Sie kann (noch) nicht fliegen, aber Pfeifen
+        - Zur Laufzeit soll das Flugverhalten zu Raketenantrieb geändert werden
     '''
