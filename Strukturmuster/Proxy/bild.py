@@ -36,7 +36,7 @@ class Datenbank():
     
     def lade_person(self, id:int) -> Person:
         person = Person(id, "Max", "Mustermann")
-        bild = self.lade_bild()
+        bild = self.lade_bild(id)
         person.bild_hinzufuegen(bild)
         return person
 

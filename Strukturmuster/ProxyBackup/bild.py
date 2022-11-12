@@ -36,11 +36,11 @@ class Datenbank():
     
     def lade_person(self, id:int) -> Person:
         person = Person(id, "Max", "Mustermann")
-        bild = self.lade_bild()
+        bild = self.lade_bild(id)
         person.bild_hinzufuegen(bild)
         return person
 
-    def lade_bild(self) -> Bild:
+    def lade_bild(self, id:int) -> Bild:
         return Bild(400, 600, "Schönes Passfoto")
 
 if __name__ == "__main__":
