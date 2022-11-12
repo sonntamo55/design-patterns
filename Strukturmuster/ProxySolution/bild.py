@@ -60,18 +60,20 @@ class Bild(IBild):
 class BildProxy(IBild):
 
     person_id:int
+    original:Bild
 
     def __init__(self, id:int):
         self.person_id = id
 
-    '''
-    Lazy Loading: Bild wird erst geladen, wenn es gebraucht wird. 
-    Achtung: Bild nicht mehrmals laden
-    '''
+    # Lazy Loading: Bild wird erst geladen, wenn es gebraucht wird.
     def zeichnen(self):
+        self.loadBild()
+        self.original.zeichnen()
+
+    # Achtung: Bild nicht mehrmals laden
+    def loadBild(self):
         if not hasattr(self, "original"):
             self.original = Datenbank().lade_bild(self.person_id)
-        self.original.zeichnen()
 
 if __name__ == "__main__":
     db = Datenbank()

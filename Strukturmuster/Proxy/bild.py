@@ -40,7 +40,7 @@ class Datenbank():
         person.bild_hinzufuegen(bild)
         return person
 
-    def lade_bild(self) -> Bild:
+    def lade_bild(self, id:int) -> Bild:
         return Bild(400, 600, "Schönes Passfoto")
 
 if __name__ == "__main__":
