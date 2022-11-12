@@ -88,3 +88,17 @@ if __name__ == "__main__":
     dr = DunkleRoestung()
     dr.milchschaum = True
     print(dr)
+
+    '''
+    Die Klasse Getränk ist die Superklasse aller Kaffeegetränke. Über Member-Variablen werden die Zutaten gesteuert (true/false).
+    In der Getränke-Klasse werden für die Zutaten der Preis berechnet bzw. die Bezeichnung zusammen gesetzt
+    
+    Aufgabe: Ändern Sie das Design zum Muster Decoator
+        - Basis-Decorator anlegen (ZutatenDecorator)
+            - Erbt von Getränk, hat eine abstrakte Methoden get_beschreibung(), preis()
+            - bekommt im Konstruktor ein Getränk und hält es in einem Member
+        - Jede Zutat als Decorator anlegen
+        - Sie erben vom Basis-Decorator, überschreiben preis() und get_beschreibung()
+        - Die einzelnen Getränke rufen die Superklasse nicht mehr auf
+        - Die Getränke-Klasse muss keinen Preis mehr berechnen, keine Beschreibung mehr zusammensetzen und braucht keine Boolschen Member mehr
+    '''
