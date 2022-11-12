@@ -48,6 +48,10 @@ class Button(ABC):
 
 class KopierenButton(Button):
 
+    def __init__(self, app:App, editor:Editor):
+        self.kopierter_text = ""
+        super().__init__(app, editor)
+
     def click(self):
         self.app.setze_kopierten_text(self.editor.get_selection())
 
@@ -184,3 +188,16 @@ if __name__ == "__main__":
     print(ed)
     ed.enter(" Design Patterns")
     print(ed)
+
+    '''
+        Die Implementierung vermischt UI-Logik mit Business-Logik, indem Knöpfe oder Shortcuts direkt 
+        Funktionen implementieren.
+        Aufgabe: Stellen Sie die Implementierung um auf das Command-Muster:
+            - Eine abstrakte Klasse Befehl anlegen
+            - Im Konstruktor wird die App und der Editor mitgegeben
+            - dazu eine Methode execute()
+            - Davon erbende Befehle zum Kopieren, Ausschneiden und Einfügen
+            - Der entsprechende Code kommt von den Buttons/Shortcuts in die jeweiligen execute()-Methoden
+            - Buttons/Shortcuts werden reduziert auf eine einzelne Klasse
+            - Sie bekommen einen konkreten Befehl bei der Instanziierung mitgegeben
+    '''
